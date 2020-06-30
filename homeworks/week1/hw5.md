@@ -13,7 +13,7 @@
 2. 傳送到 DNS Surver ， DNS Surver 會回傳 IP 位置給前端。
 3. 前端將 requst傳送到 IP 位置。
 4. Google 的 Surver 去 DB 找資料。
-5. 沿著原來的路徑傳送 Rrsponse 給 Surver 、硬體，作業系統、瀏覽器。
+5. 沿著原來的路徑傳送 Rrsponse 給 Survur 、硬體，作業系統、瀏覽器。
 6. 我們會在瀏覽器上看到結果。
 
 ## 請列舉出 3 個「課程沒有提到」的 command line 指令並且說明功用

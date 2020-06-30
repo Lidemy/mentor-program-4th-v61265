@@ -247,7 +247,7 @@ git branch -m (新的名稱)
 ## 把 branch 抓下來
 想將遠端的 branch 抓到本地，可輸入：
 ```
-git checkout (欲抓 branch 名稱)
+git pull origin (欲抓 branch 名稱)
 ```
 ## Git Hook
 Hook 是鉤子的意思，在程式中看到 Hook 就是勾住某樣東西，發生變化時通知我。例如 Git 的 pre-commit Hook 就是在 commit 前檢查是否符合規範，若違反就無法 commit 。

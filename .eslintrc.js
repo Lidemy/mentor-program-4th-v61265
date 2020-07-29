@@ -23,5 +23,6 @@ module.exports = {
   rules: {
     "no-console": "off",
     "linebreak-style": ["error", "windows"],
+    "no-restricted-syntax": 0,
   },
 };

@@ -5,16 +5,17 @@ module.exports = {
     node: true,
     jest: true
   },
-  extends: 'airbnb',
+  parser: "babel-eslint",
+  extends: "airbnb",
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2019,
   },
   plugins: [
     'react',
@@ -22,5 +23,6 @@ module.exports = {
   rules: {
     "no-console": "off",
     "linebreak-style": ["error", "windows"],
+    "no-restricted-syntax": 0,
   },
 };

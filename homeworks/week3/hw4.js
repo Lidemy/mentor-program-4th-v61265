@@ -8,7 +8,7 @@ const lines = [];
 
 rl.on('line', line => lines.push(line));
 
-function back(str) {
+function reverse(str) {
   let result = '';
   for (let i = str.length - 1; i >= 0; i -= 1) {
     result += str[i];
@@ -17,7 +17,7 @@ function back(str) {
 }
 
 function solve(input) {
-  console.log((back(input[0]) === input[0]) ? 'True' : 'False');
+  console.log((reverse(input[0]) === input[0]) ? 'True' : 'False');
 }
 
 rl.on('close', () => solve(lines));

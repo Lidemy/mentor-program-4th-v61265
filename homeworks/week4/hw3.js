@@ -12,7 +12,8 @@ request(`${apiUrl}/name/${name}`, (err, res, body) => {
     return console.log('抓取失敗');
   }
   const data = JSON.parse(body);
-  if (data.status === 404) return ('找不到國家資訊');
+  if (data.status <= 200 && data.status > 500) return ('找不到國家資訊');
+  // 之前只有 === 404 ，但 200~300也是錯誤資訊
   for (let i = 0; i < data.length; i += 1) {
     console.log('============');
     console.log('國家:', data[i].name);

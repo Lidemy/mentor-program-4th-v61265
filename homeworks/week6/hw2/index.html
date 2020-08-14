@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>新拖延運動報名表單</title>
+        <meta name='viewport' content='width=device-width,initail-scale=1'>
+        <link rel="stylesheet" href='https://necolas.github.io/normalize.css/8.0.1/normalize.css' /> <!--拿掉一些有的沒的設定-->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div class='main'>
+                <h1 class='main__title'>
+                    新拖延運動報名表單
+                </h1>
+                <div class='main__info'>
+                    活動日期：2020/12/10 ~ 2020/12/11
+                    <br>
+                    活動地點：台北市大安區新生南路二段1號
+                </div>
+                <div class='main__must'>
+                    * 必填
+                </div>
+                <div class='input'>
+                    <div class='input__ques'>
+                        <div class='ques__desc'>
+                            暱稱 <span class='star'>*</span>
+                        </div>
+                        <form><input type='text'/></form>
+                    </div>
+                    <div class='input__ques'>
+                        <div class='ques__desc'>
+                            電子信箱 <span class='star'>*</span>
+                        </div>
+                        <form><input type='email'/></form>
+                    </div>
+                    <div class='input__ques'>
+                        <div class='ques__desc'>
+                            手機號碼 <span class='star'>*</span>
+                        </div>
+                        <form><input type='text'/></form>
+                    </div>
+                    <div class='input__ques'>
+                        <div class='ques__desc'>
+                            報名類型 <span class='star'>*</span>
+                        </div>
+                        <form class='radio'>
+                            <div>
+                                <input type='radio' name='how' id='imaging' /><label for='imaging'> 躺在床上用想像力實作</label>
+                            </div>
+                            <div>
+                                <input type='radio' name='how' id='phone' /><label for='phone'>  趴在地上滑手機找現成的</label>
+                            </div>   
+                        </form>
+                    </div>
+                    <div class='input__ques'>
+                        <div class='ques__desc'>
+                            怎麼知道這個活動ㄉ？ <span class='star'>*</span>
+                        </div>
+                        <form><input type='text' /></form>
+                    </div>
+                    <div class='input__ques'>
+                        <div class='ques__desc'>
+                            其他 <span class='star'>*</span>
+                        </div>
+                        <div class='ps'>對活動的一些建議</div>
+                        <form><input type='text' /></form>
+                    </div>
+                </div>
+                <div class='submit'>
+                    <input type='submit' value='提交' />
+                    <div>請勿透過表單送出您的密碼。</div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class='footer__info'>
+                © 2020 © Copyright. All rights Reserved.
+            </div>
+        </footer>
+    </body>
+</html>
+
+<!--
+    看完檢討影片後可優化處：
+    1. 整個回答區可以用 form 框起來，就不用每次寫
+    2. 必填的 * 可以用 :after
+    3. 單選/複選要連字一起選，可以用 <label> 包住整個選項，就不用一直設定 id
+-->

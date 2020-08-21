@@ -1,0 +1,206 @@
+html {
+    font-family: MicrosoftJhengHei;
+}
+
+.navbar {
+    box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar .wrapper {
+    height: 84px;
+    background-color: white;
+    display: flex;
+    /*兩個段落左右兩邊推開*/
+    justify-content: space-between;
+    /*垂直置中*/
+    align-items: center;
+    padding:0px 20px;
+}
+
+.navbar__site-name {
+    color: #489846;
+    font-size: 36px;
+    font-family: Questrial;
+}
+
+.navbar__list {
+    /*這樣就不會有前面的符號*/
+    list-style: none; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-size: 18px;
+}
+
+.navbar__list li{
+    margin-left:12px;
+    border-radius: 8px;
+    transition: background 0.3s ease-in;
+}
+
+.navbar__list li.active, .navbar__list li:hover {
+    background: #ff7286;
+}
+
+.navbar__list li a {
+    display: block;
+    /*把連結底線拿掉*/
+    text-decoration:none;
+    padding: 12px 24px;
+    color: black;
+}
+
+.navbar__list li.active a, .navbar__list li:hover a {
+    color: white;
+}
+
+.wrapper {
+    max-width: 1280px;
+    /*置中*/
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+h2 {
+    margin: 0;
+}
+
+.section {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.section__title {
+    display: inline-block;
+    font-size: 36px;
+    /*標題前面的綠色*/
+    border-left: solid 15px #a3dea2;
+    padding: 16px;
+    margin-bottom: 36px;
+}
+
+footer {
+    margin-top: 48px;
+}
+
+.footer__bottom {
+    padding: 12px;
+    background: #35564b;
+    color: white;
+    font: 18px;
+    text-align: center;
+}
+
+.footer__top {
+    background: #e8efee;
+    padding: 32px 0px;
+    color: #484848;
+}
+
+.footer__top .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__info {
+    margin-right: 16px;
+}
+
+.footer__info div + div {
+    margin-top: 10px;
+}
+
+.footer__site {
+    font-size: 36px;
+    color: #489846;
+}
+
+.faq__list {
+    max-width:768px;
+    margin: auto;
+    list-style: none;
+}
+
+.faq__ques {
+    padding: 25px 15px;
+    position: relative;
+}
+
+.faq__ques span {
+    color: #70b282;
+    font: 14px;
+    font-weight:bold;
+}
+
+.faq__ques h4 {
+    display: inline;
+    margin-left: 10px;
+}
+
+
+.faq__item.active{ 
+    max-height: 2000px;
+    transition: max-height 1s ease-in-out;
+}
+
+.faq__content {
+    padding: 0px 30px 40px 50px;
+}
+
+.faq__content p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 2em;
+}
+
+.more{
+    position: absolute;
+    top: 25px;
+    right: 15px;
+    transform: translate(-50%, -25%)
+}
+
+.faq__item {
+    display: block;
+    border-bottom: 1px solid #a6e2c0;
+    max-height: 68px;
+    overflow: hidden;
+    transition: max-height 1s ease-in-out;
+    cursor: pointer;
+}
+
+
+/*設定手機板，最大寬度:768px*/
+@media(max-width: 768px) {
+    .navbar .wrapper {
+        height: 120px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0px;
+    }
+
+    .navbar__site-name {
+        margin-top: 10px;
+    }
+
+    .navbar__list {
+        display: flex;
+        width: 100%;
+    }
+    
+    .navbar__list li {
+        flex: 1;
+        margin-left: 0;
+        border-radius: 0;
+        text-align: center;
+    }
+    
+    .footer__top .wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .footer__info {
+        margin-right: 0;
+        margin-top: 16px;
+    }
+}

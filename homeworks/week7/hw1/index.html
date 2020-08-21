@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>新拖延運動報名表單</title>
+        <meta name='viewport' content='width=device-width,initail-scale=1'>
+        <link rel="stylesheet" href='https://necolas.github.io/normalize.css/8.0.1/normalize.css' /> <!--拿掉一些有的沒的設定-->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class='wrapper'>
+            <div class='main'>
+                <h1 class='main__title'>
+                    新拖延運動報名表單
+                </h1>
+                <div class='main__info'>
+                    活動日期：2020/12/10 ~ 2020/12/11
+                    <br>
+                    活動地點：台北市大安區新生南路二段1號
+                </div>
+                <div class='main__must'>
+                    * 必填
+                </div>
+                <form class='input'>
+                    <div class='input__ques required hidden'>
+                        <div class='ques__desc'>
+                            暱稱
+                        </div>
+                        <input type='text' name='name'/>
+                        <div class='remain'>請輸入暱稱</div>
+                    </div>
+                    <div class='input__ques required hidden'>
+                        <div class='ques__desc'>
+                            電子信箱
+                        </div>
+                        <input type='text' name='email'/>
+                        <div class='remain'>請輸入電子信箱</div>
+                    </div>
+                    <div class='input__ques required hidden'>
+                        <div class='ques__desc'>
+                            手機號碼
+                        </div>
+                        <input type='text' name='phone'/>
+                        <div class='remain'>請輸入手機號碼</div>
+                    </div>
+                    <div class='input__ques radio required hidden'>
+                        <div class='ques__desc'>
+                            報名類型
+                        </div>
+                        <div>
+                            <label><input type='radio' name='type' id='imaging' /> 躺在床上用想像力實作</label>
+                        </div>
+                        <div>
+                            <label><input type='radio' name='type' id='phone' /> 趴在地上滑手機找現成的</label>
+                        </div> 
+                        <div class='remain'>請勾選報名類型</div>  
+                    </div>
+                    <div class='input__ques required hidden'>
+                        <div class='ques__desc'>
+                            怎麼知道這個活動ㄉ？
+                        </div>
+                        <input type='text' name='how'/>
+                        <div class='remain'>請輸入資料來源</div>
+                    </div>
+                    <div class='input__ques'>
+                        <div class='other'>
+                            其他
+                        </div>
+                        <div class='ps'>對活動的一些建議</div>
+                        <input type='text' />
+                    </div>
+                    <div class='submit'>
+                        <input type='submit' value='提交' />
+                        <div>請勿透過表單送出您的密碼。</div>
+                    </div>
+                </form>
+            </div>    
+        </div>
+        <footer>
+            <div class='footer__info'>
+                © 2020 © Copyright. All rights Reserved.
+            </div>
+        </footer>
+        <script src='index.js'></script>
+    </body>
+</html>

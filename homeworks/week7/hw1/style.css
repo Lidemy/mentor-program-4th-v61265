@@ -1,0 +1,126 @@
+@charset 'UTF-8';
+
+html {
+    background: #F0F0F0;
+    font-family: MicrosoftJhengHei;
+}
+
+/*footer設定*/
+.footer__info {
+    background: black;
+    color: #999999;
+    font-size: 13px;
+    padding: 25px;
+    text-align: center; 
+}
+
+.wrapper {
+    /*內容物置中*/
+    margin: 0 auto;
+}
+
+/*main包住所有東西*/
+.main {
+    max-width: 645px;
+    border-top: solid #fad312 8px;
+    background: white;
+    margin: 10% auto;
+    box-shadow: 1.8px 2.4px 5px 0 rgba(0, 0, 0, 0.3);
+    padding: 54px 42px;
+    box-sizing: border-box;
+}
+
+/*content往後縮*/
+.content {
+    margin-left: 41px;
+}
+
+.main__title {
+    font-size: 36px;
+    margin-bottom: 35px;
+    margin-top: 0;
+    font-weight:bold;
+}
+
+.main__info {
+
+    font-size: 14px;
+    line-height: 2em;
+}
+
+.main__must {
+    color: #e74149;
+    font-size: 16px;
+    margin-top: 22px;
+}
+
+.required .ques__desc::after {
+    content:'*';
+    color: #e74149;
+}
+
+.input {
+    padding-top: 55px;
+}
+
+form input {
+    border: solid 1px #d0d0d0;
+}
+
+.ques__desc, .other {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.ps {
+    font-size: 14px;
+    margin-top: 12px;
+    margin-bottom: 20px
+}
+
+.input__ques + .input__ques {
+    margin-top: 49px;
+}
+
+label {
+    font-size: 14px;
+}
+
+.radio input {
+    margin-top: 20px;
+}
+
+.submit input {
+    font-size: 15px;
+    padding: 13px 30px;
+    border-radius: 3px;
+    border: none;
+    background: #fad312;
+    margin-top: 55px;
+}
+
+.submit input:hover {
+    content: '';
+    transition: 0.2s;
+    background: white;
+    border: solid #fad312 2px;
+    cursor: pointer;
+}
+
+.submit div {
+    font-size: 14px;
+    margin-top: 21px;
+}
+
+.remain {
+    margin-top: 4px;
+    color: red;
+    /*出現時不佔空間，預設隱藏*/
+    position: absolute; 
+    font-size: 12px;
+}
+
+.hidden .remain {
+    visibility: hidden;
+}

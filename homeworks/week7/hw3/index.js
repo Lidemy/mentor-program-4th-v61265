@@ -22,11 +22,12 @@ document.querySelector('.title input').addEventListener('keypress', (e) => {
     if (!value) return;
     const newItem = document.createElement('label');
     newItem.classList.add('list__item');
-    newItem.innerHTML = `<div class='item__content'>
-    <input type='checkbox' />
-    <span class='content'>${escapeHtml(value)}</span>
-    </div>
-    <div class='list__delete'>X</div>
+    newItem.innerHTML = `
+      <div class='item__content'>
+      <input type='checkbox' />
+      <span class='content'>${escapeHtml(value)}</span>
+      </div>
+      <div class='list__delete'>X</div>
     `;
     document.querySelector('.list').append(newItem);
     document.querySelector('.title input').value = '';

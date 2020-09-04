@@ -1,0 +1,140 @@
+/* 設定 navbar */
+
+.navbar {
+    box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+.navbar .wrapper {
+    min-height: 60px;
+    background-color: white;
+    display: flex;
+    /*兩個段落左右兩邊推開*/
+    justify-content: space-between;
+    /*垂直置中*/
+    align-items: center;
+    padding:0px 20px;
+}
+
+.navbar__site-name {
+    color: black;
+    font-size: 30px;
+    font-family: Questrial;
+}
+
+.navbar__list {
+    /*這樣就不會有前面的符號*/
+    list-style: none; 
+    margin: 0;
+    display: flex;
+    font-size: 18px;
+}
+
+.navbar__list li{
+    margin-left:12px;
+    transition: background 0.3s ease-in;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.navbar__list li:hover {
+    background: gray;
+    color: white; 
+}
+
+.navbar__list li a {
+    display: block;
+    /*把連結底線拿掉*/
+    text-decoration:none;
+    padding: 12px 24px;
+    color: black;
+}
+
+.navbar__list li:hover a {
+    color: white;
+}
+
+/* 設定其他東西 */
+.bg {
+    background: url('bg.jpg') center/cover no-repeat;
+    position: relative;
+}
+
+.bg::after {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 0, 0.7);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.bg .wrapper {
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 25px;
+}
+
+.title * {
+    color: white;
+    text-align: center;
+}
+
+.streams {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stream {
+    display: inline-block;
+    background-color: #484848;
+    margin-top: 10px;
+    margin-left: 16px;
+    cursor: pointer;
+    filter: brightness(70%);
+}
+
+.stream:hover {
+    filter: brightness(100%);
+    transform: scale(1.07);
+}
+
+.stream-empty {
+    width: 360px;
+    margin-left: 16px;
+}
+
+.stream__data {
+    padding: 5px;
+}
+
+.stream img {
+    width: 360px;
+    height: 180px;
+}
+
+.stream__data {
+    display: flex;
+}
+
+.stream__data img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.data__desc {
+    padding-left: 10px;
+    padding-top: 5px;
+    color: white;
+    max-width: 280px;
+}
+
+.desc__title {
+    font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow:hidden;
+}

@@ -25,7 +25,7 @@ JSONP 是 `JSON with Padding` 。
 
 ## 要如何存取跨網域的 API？
 
-同上題，因為有同源政策，若要跨網域分享， Server 端要再 Response 的 Header 加上 `Access-Control-Allow-Origin` 設定允許給哪些網域。之後瀏覽器要接收 response 時會先檢查其中是否包含發出 request 的 Origin ，有的話才會回傳。
+同上題，因為有同源政策，若要跨網域分享， Server 端要在 Response 的 Header 加上 `Access-Control-Allow-Origin` 設定允許給哪些網域。之後瀏覽器要接收 response 時會先檢查其中是否包含發出 request 的 Origin ，有的話才會回傳。
 
 
 ## 為什麼我們在第四週時沒碰到跨網域的問題，這週卻碰到了？

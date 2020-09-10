@@ -12,7 +12,7 @@
         die('');
     }
 
-    $nickname = htmlspecialchars($_POST['nickname']);
+    $nickname = $_POST['nickname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
 

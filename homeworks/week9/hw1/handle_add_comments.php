@@ -11,11 +11,10 @@
     $username = $_SESSION['username'];
     $nickname = getNicknameFromUsrname($username);
     $content = $_POST['content'];
-    $new_content = htmlspecialchars($content);
 
     $sql = sprintf(
         "INSERT INTO v61265_board_comments(nickname, content) VALUES ('%s', '%s')",
-        $nickname, $new_content
+        $nickname, $content
     );
     $result = $conn->query($sql);
     if (!$result) {

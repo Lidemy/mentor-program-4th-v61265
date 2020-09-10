@@ -35,7 +35,7 @@
                 <div class='user__info'>
                     <?php 
                         if (!empty($nickname)) {
-                            echo "<span class='hello'> hi, $nickname</span>";
+                            echo sprintf("<span class='hello'> hi, %s </span>", htmlspecialchars($nickname));
                             echo "<a href='./logout.php'>登出</a>";
                         } else {
                             echo "<a href='./login.php'>登入</a> ";
@@ -74,10 +74,10 @@
                     <div class='avatar'></div>
                     <div class='comment__main'>
                         <div class='comment__info'>
-                            <span class='comment__author'><?php echo $row['nickname'] ?></span>
-                            <span class='comment__time'>‧<?php echo $row['created_at'] ?></span>
+                            <span class='comment__author'><?php echo htmlspecialchars($row['nickname']) ?></span>
+                            <span class='comment__time'>‧<?php echo htmlspecialchars($row['created_at']) ?></span>
                         </div>
-                        <div class='comment__content'><?php echo $row['content'] ?></div>
+                        <div class='comment__content'><?php echo htmlspecialchars($row['content']) ?></div>
                     </div>
                 </div>
                 <?php } ?>

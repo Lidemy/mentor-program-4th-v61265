@@ -39,7 +39,7 @@ function addTodoToDOM(container, todo, isPrepend) {
       <div class="d-flex w-100 p-2 form-check">
         <label class="todo-content">
           <input class="form-check-input" type="checkbox" value=""/>
-          <span>${todo}</span>    
+          <span>${escape(todo)}</span>    
         </label> 
         <input class="form-control edit-todo__input" value="" style="display: none">
       </div>

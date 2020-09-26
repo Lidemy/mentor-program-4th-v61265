@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>十二週留言板</title>
+        <link rel='stylesheet' href='./normalize.css'>
+        <link rel='stylesheet' href='./style.css'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.php">留言板</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </nav>
+        <div class='container'>
+            <form class='add-comment-form'>
+                <div class="form-group">
+                  <label>暱稱</label>
+                  <input name='nickname' type="text" class="form-control">
+                </div>
+                <div class="row align-items-center">
+                    <div class="form-group col-11">
+                        <label for="exampleFormControlTextarea1">輸入留言：</label>
+                        <textarea name='content' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-secondary col col-lg-1">提交</button>
+                </div>
+            </form>
+            <div class='comments'>
+                
+            </div>
+        </div>
+    <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+    <script src='./index.js'></script>
+    </body>
+
+</html>

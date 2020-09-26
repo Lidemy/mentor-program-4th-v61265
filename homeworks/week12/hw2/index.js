@@ -33,12 +33,17 @@ function getAllTodo() {
 }
 
 // 加上新 todo
-function addTodoToDOM(container, todo, isPrepend) {
+// 一時想不到怎麼更改 input 的 checked 狀態 (用 .prop('checked', 'true') 沒用) ，在此先暴力改變 checked 狀態
+function addTodoToDOM(container, todo, done, isPrepend) {
+  var is_checked = '';
+  if (done) {
+    is_checked = 'checked';
+  }
   const content = `
     <div class='todo d-flex justify-content-between'>
       <div class="d-flex w-100 p-2 form-check">
-        <label class="todo-content">
-          <input class="form-check-input" type="checkbox" value=""/>
+        <label class="todo-content text-truncate" style="max-width: 500px;">
+          <input class="form-check-input" type="checkbox" ${is_checked}/>
           <span>${escape(todo)}</span>    
         </label> 
         <input class="form-control edit-todo__input" value="" style="display: none">
@@ -200,10 +205,12 @@ pushAPI('GET', api_url, packageTodo(), (data) => {
     datas = JSON.parse(data.contents);
     todos = datas.content;
     $.map(todos, (todo) => {
-      addTodoToDOM(todosDOM, todo.content, false);
       if (todo.status === 'done') {
+        addTodoToDOM(todosDOM, todo.content, true, false);
         new_todo = $('.todos .todo:last-child');
         changeTodoStatus(new_todo);
+      } else {
+        addTodoToDOM(todosDOM, todo.content, false, false);
       }
     });
 
@@ -213,9 +220,9 @@ pushAPI('GET', api_url, packageTodo(), (data) => {
     new_user = false;
     countStatusNum();
   } else {
-    addTodoToDOM(todosDOM, '造一艘火箭', false);
-    addTodoToDOM(todosDOM, '跟木乃伊決鬥', false);
-    addTodoToDOM(todosDOM, '或攀登艾菲爾鐵塔', false);
+    addTodoToDOM(todosDOM, '造一艘火箭', false, false);
+    addTodoToDOM(todosDOM, '跟木乃伊決鬥', false, false);
+    addTodoToDOM(todosDOM, '或攀登艾菲爾鐵塔', false, false);
     countStatusNum();
   }
 }) 
@@ -227,7 +234,7 @@ $('.add-todo-form').submit((e) => {
     alert('請輸入內容！');
     return;
   }
-  addTodoToDOM(todosDOM, $('input[name=content-input]').val(), true);
+  addTodoToDOM(todosDOM, $('input[name=content-input]').val(), false, true);
   $('input[name=content-input]').val("");
   countStatusNum();
 })

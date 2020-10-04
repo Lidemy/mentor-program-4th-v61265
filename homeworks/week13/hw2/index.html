@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>十三週留言板 plugin</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class='container'>
+            <div class="comments-area">
+
+            </div>
+            <div class="comments-area2">
+
+            </div>
+        </div>
+    <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+    <script src='./dist/main.js'></script>
+    <script>
+        $(document).ready(() =>{
+            commentPlugin.init({
+                siteKey: 'v61265',
+                apiUrl: 'http://mentor-program.co/mtr04group6/v61265/week12/board/',
+                containerSelector: '.comments-area'
+            })
+        })
+
+        $(document).ready(() =>{
+            commentPlugin.init({
+                siteKey: 'v61265b',
+                apiUrl: 'http://mentor-program.co/mtr04group6/v61265/week12/board/',
+                containerSelector: '.comments-area'
+            })
+        })
+    </script>
+    </body>
+
+</html>

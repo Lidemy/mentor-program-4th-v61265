@@ -1,0 +1,287 @@
+$font-size-normal: 16px;
+$btn-color-01: #737373;
+$btn-color-02: #9a9a9a;
+
+@mixin btn-01() {
+  border: solid 1px #a8a8a8;
+  color: #a8a8a8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.navbar {
+  height: 80px;
+  
+  &__site-name {
+    font-size: 28px;
+    font-weight: bold;
+
+    a {
+      text-decoration: none;
+      color: #333333;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-content: space-between;
+
+    & > div {
+      display: flex;
+    }
+
+    li {
+      margin-left: 21px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #787878;
+      font-size: $font-size-normal;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0px 12px;
+}
+
+.banner {
+  background-image: linear-gradient(to top, #000000, #434343);
+  height: 240px;
+  color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__wrapper > div {
+    margin-top: 26px;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+}
+
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 138px;
+  min-height: calc(100vh - 350px);
+  flex-direction: column;
+}
+
+.posts, .container {
+  background: white;
+  padding: 6px;
+  display: inline-flex;
+  margin: 0 auto;
+  margin-top: -30px;
+  flex-direction: column;
+}
+
+.post {
+  width: 900px;
+  padding: 30px;
+  border: solid 1px $btn-color-02;
+
+  & + & {
+    margin-top: 24px;
+  }
+
+  &__header {
+    font-size: $font-size-normal;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__action {
+    padding: 3px 12px;
+    @include btn-01();
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  &__info {
+    margin-top: 19px;
+    padding: 12px 22px;
+    background: #eee;
+  }
+
+  &__content {
+    margin-top: 17px;
+    white-space: pre-line;
+    line-height: 1.5em;
+  }
+}
+
+.btn-read-more {
+  display: inline-block;
+  padding: 12px 16px;
+  border: solid 1px $btn-color-01;
+  color: $btn-color-01;
+  margin-top: 36px;
+  text-decoration: none;
+}
+
+.login-wrapper {
+  margin: 0 auto;
+  border: solid 1px black;
+  width: 527px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 62px 72px;
+  margin-top: -30px;
+  background: white;
+
+  form, input {
+    width: 100%;
+  }
+
+  input[type=submit] {
+    height: 56px;
+    background-image: linear-gradient(to top, black, #434343);
+    color: white;
+    margin-top: 73px;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: normal;
+  }
+}
+
+.input__field {
+  margin-top: 16px;
+  height: 40px;
+}
+
+.input__wrapper + .input__wrapper {
+  margin-top: 23px;
+}
+
+.input__label {
+  font-size: 14px;
+  margin-left: 21px;
+}
+
+.edit-post {
+  width: 900px;
+  padding: 30px;
+  border: solid 1px $btn-color-02;
+
+  &__title {
+    font-size: 20px;
+  }
+
+  &__input-wrapper {
+    width: 100%;
+    margin-top: 28px;
+
+    input, textarea {
+      width: 100%;
+      padding: 6px;
+    }
+  }
+
+  &__btn-wrapper {
+    text-align: right;
+  }
+
+  &__btn {
+    display: inline-block;
+    padding: 10px 39px;
+    border: solid 1px #737373;
+    color: #737373;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+}
+
+.admin-post {
+  padding: 24px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $btn-color-02;
+  font-size: 14px;
+  width: 920px;
+
+  &__title {
+    font-size: $font-size-normal;
+    margin-left: 16px;
+  }
+
+  &____info {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+  }
+
+  &____created-at {
+    color: #8f8f8f;
+  }
+
+  &____btn {
+    padding: 4px 8px;
+    @include btn-01();
+    cursor: pointer;
+    margin-left: 8px;
+    text-decoration: none;
+
+    &:last-child {
+      margin-right: 16px;
+    }
+  }
+}
+
+
+footer {
+  padding: 10px 0px;
+  background-color: #323232;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+}
+
+select {
+  margin-top: 20px;
+  padding: 5px;
+  width: 100%;
+}
+
+.paginator_btn {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  border: 1px solid #c2dffb;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}

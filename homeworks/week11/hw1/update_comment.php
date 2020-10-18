@@ -24,20 +24,7 @@
     $row = $result->fetch_assoc();
 
     // 驗證身分
-    switch ($role) {
-        case 0:
-            header('Location: index.php');
-            exit();
-            break;
-        case 1:
-            if ($row['username'] !== $username) {
-                header('Location: index.php');
-                exit();
-            } 
-            break;
-        case 2:
-            break;
-        }
+    checkRole($role);
 ?>
 
 <!DOCTYPE html>

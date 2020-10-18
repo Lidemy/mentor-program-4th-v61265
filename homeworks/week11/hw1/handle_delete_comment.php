@@ -19,20 +19,7 @@
     $row = $result->fetch_assoc();
 
     // 檢查權限
-    switch ($role) {
-        case 0:
-            header('Location: index.php');
-            exit();
-            break;
-        case 1:
-            if ($row['username'] !== $username) {
-                header('Location: index.php');
-                exit();
-            } 
-            break;
-        case 2:
-            break;
-        }
+    checkRole($role);
 
     // 把目標留言的 is_deleted 改成 1
     $sql ="UPDATE v61265_board_comments SET is_deleted=1 WHERE id=?";

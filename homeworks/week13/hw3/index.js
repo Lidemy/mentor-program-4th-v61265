@@ -53,13 +53,7 @@ function getGames(cb) {
     })
   }).then((response) => {
     if (response.status >= 200 && response.status < 400) {
-      try {
-        response.json().then((data) => {
-          cb(data);
-        })
-      } catch (err) {
-        console.log(err);
-      }
+      response.json().then(data => cb(data));
     }
   }).catch((err) => {
     console.log(err);
@@ -97,11 +91,7 @@ function getStreams(name, cb) {
     })
   }).then(response => {
     if (response.status >= 200 && response.status < 400) {
-      try {
-        response.json().then(data => cb(data.streams))
-      } catch(e) {
-        return
-      }
+      response.json().then(data => cb(data.streams));
     }
   }).catch(e => e)
 }
@@ -127,7 +117,7 @@ function changeStreams(streams) {
 }
 
 /* 拿到前五名名稱 & 設定好 navbar 和 第一頁 */
-getGames((games) => {
+getGames(games => {
   const gamesList = games.top.map(game => game.game.name);
   for (const game of gamesList) {
     const navbarGame = document.createElement('li');

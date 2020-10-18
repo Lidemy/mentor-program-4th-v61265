@@ -16,4 +16,21 @@
         $role = $row['role'];
         return ['nickname'=>$nickname, 'role'=>$role ];
     }
+
+    function checkRole($role) {
+        switch ($role) {
+            case 'banned-member':
+                header('Location: index.php');
+                exit();
+                break;
+            case 'general-member':
+                if ($row['username'] !== $username) {
+                    header('Location: index.php');
+                    exit();
+                } 
+                break;
+            case 'admin':
+                break;
+        }
+    }
 ?>

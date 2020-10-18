@@ -10,7 +10,7 @@
         $nickname = getFromUsrname($username)['nickname'];
     }
 
-    if ($role !== 2) {
+    if ($role !== 'admin') {
         header('Location: ./index.php');
         exit();
     }
@@ -22,7 +22,7 @@
     $items_per_page = 10;
     $offset = ($page - 1) * $items_per_page;
     
-    $sql = "SELECT * FROM v61265_board_users WHERE is_deleted is null ORDER BY created_at DESC limit ? offset ?";
+    $sql = "SELECT * FROM v61265_board_users WHERE is_deleted=0 ORDER BY created_at DESC limit ? offset ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ii', $items_per_page, $offest);
     $result = $stmt->execute();
@@ -72,10 +72,11 @@
                                 <form method='POST' action='handle_update_role.php'>
                                     身分：<select name='role'>
                                         <?php
-                                            $numToname = ['停權中', '一般使用者', '管理員'];
+                                            $role = $row['role'];
+                                            $role_list = ['admin', 'general-member', 'banned-member'];
                                             for ($i = 0; $i <= 2; $i++) {
-                                                $is_selected = ($row['role'] === $i)? 'selected': '';
-                                                echo sprintf("<option value=%d %s>%s</option>", $i, $is_selected, $numToname[$i]);
+                                                $is_selected = ($row['role'] === $role_list[$i])? 'selected': '';
+                                                echo sprintf("<option value=%s %s>%s</option>", $role_list[$i], $is_selected, $role_list[$i]);
                                             } 
                                         ?>
                                     </select>
@@ -86,7 +87,7 @@
                             </div>
                             <div class='user_comments hidden'>
                                 <?php 
-                                    $sql = "SELECT * FROM v61265_board_comments WHERE username=? and is_deleted is null ORDER BY created_at DESC";
+                                    $sql = "SELECT * FROM v61265_board_comments WHERE username=? and is_deleted=0 ORDER BY created_at DESC";
                                     $stmt = $conn->prepare($sql);
                                     $stmt->bind_param('s', $row['username']);
                                     $comments_result = $stmt->execute();
@@ -114,7 +115,7 @@
                 <?php } ?>
             </div>
             <?php
-                $sql = "SELECT count(id) as count FROM v61265_board_comments WHERE is_deleted is null";
+                $sql = "SELECT count(id) as count FROM v61265_board_comments WHERE is_deleted=0";
                 $stmt = $conn->prepare($sql);
                 $result = $stmt->execute();
                 $result = $stmt->get_result();

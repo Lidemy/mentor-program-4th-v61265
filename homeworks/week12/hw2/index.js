@@ -3,7 +3,7 @@
 // 先設定好參數
 const todosDOM = $('.todos');
 var status_chosen = 'all';
-var new_user = true;
+var is_new_user = true;
 // 得到 token
 const getUrlString = location.href;
 const url = new URL(getUrlString);
@@ -21,36 +21,35 @@ function escape(str){
 }
 
 // 更換 class
-function chageClass(where, before, after) {
-  where.addClass(after);
-  where.removeClass(before);
+function chageClass(eleClassList, before, after) {
+  eleClassList.addClass(after);
+  eleClassList.removeClass(before);
 }
 
 // 得到所有 todo
-function getAllTodo() {
-  const allTodo = [...todosDOM.find('.todo')];
-  return allTodo;
-}
+const getAllTodo = (doms) => [...doms.find('.todo')];
 
 // 加上新 todo
 // 一時想不到怎麼更改 input 的 checked 狀態 (用 .prop('checked', 'true') 沒用) ，在此先暴力改變 checked 狀態
 function addTodoToDOM(container, todo, done, isPrepend) {
-  var is_checked = '';
+  var checked_status = '';
   if (done) {
-    is_checked = 'checked';
+    checked_status = 'checked';
   }
   const content = `
-    <div class='todo d-flex justify-content-between'>
+    <div class='todo d-flex justify-content-between completed'>
       <div class="d-flex w-100 p-2 form-check">
         <label class="todo-content text-truncate" style="max-width: 500px;">
-          <input class="form-check-input" type="checkbox" ${is_checked}/>
+          <input class="form-check-input" type="checkbox" ${checked_status}/>
           <span>${escape(todo)}</span>    
         </label> 
-        <input class="form-control edit-todo__input" value="" style="display: none">
+        <input class="form-control edit-todo__input" value="">
       </div>
       <div class='action d-flex p-2'>
-        <img class='update-todo__btn' src='./edit.png' width="28px" height="28px">
-        <img class='edit_ok__btn' src='./edit_ok.png' width="28px" height="28px" style="display: none">
+        <div class='edit-todo__btn'>
+          <img class='update-todo__btn' src='./edit.png' width="28px" height="28px">
+          <img class='edit_ok__btn' src='./edit_ok.png' width="28px" height="28px">
+        </div>
         <img class='delete-todo__btn' src='./remove.png' width="28px" height="28px">
       </div>
     </div>
@@ -77,43 +76,47 @@ function chooseStatus(status) {
   for (btn of all_status) {
     $(btn).removeClass('active');
   }
-  allTodo = getAllTodo();
+  const allTodo = getAllTodo(todosDOM);
   $.map(allTodo, (todo) => {
     $(todo).addClass('d-flex');
     $(todo).show();
   })
   
   // 加上 active 和隱藏
-  if (status === 'all') {
-    status_chosen = 'all';
-    $(btn).removeClass('active');
-    $('.btn-all').addClass('active');
-  } else if (status === 'done') {
-    status_chosen = 'done';
-    $(btn).removeClass('active');
-    $('.btn-done').addClass('active');
-    $.map(allTodo, (todo) => {
-      if (!$(todo).find('span').hasClass('done')) {
-        $(todo).hide();
-        $(todo).removeClass('d-flex')
-      }
-    });
-  } else {
-    status_chosen = 'not-yet';
-    $(btn).removeClass('active');
-    $('.btn-not-yet').addClass('active');
-    $.map(allTodo, (todo) => {
-      if ($(todo).find('span').hasClass('done')) {
-        $(todo).hide();
-        $(todo).removeClass('d-flex');
-      }
-    });
+  switch (status) {
+    case 'all':
+      status_chosen = 'all';
+      $(btn).removeClass('active');
+      $('.btn-all').addClass('active');
+      break;
+    case 'done':
+      status_chosen = 'done';
+      $(btn).removeClass('active');
+      $('.btn-done').addClass('active');
+      $.map(allTodo, (todo) => {
+        if (!$(todo).find('span').hasClass('done')) {
+          $(todo).hide();
+          $(todo).removeClass('d-flex')
+        }
+      });
+      break;
+    case 'not-yet':
+      status_chosen = 'not-yet';
+      $(btn).removeClass('active');
+      $('.btn-not-yet').addClass('active');
+      $.map(allTodo, (todo) => {
+        if ($(todo).find('span').hasClass('done')) {
+          $(todo).hide();
+          $(todo).removeClass('d-flex');
+        }
+      });
+      break;
   }
 }
 
 // 計算總數量並更新
 function countStatusNum() {
-  allTodo = getAllTodo();
+  allTodo = getAllTodo(todosDOM);
   all = allTodo.length;
   done = 0;
   $.map(allTodo, (todo) => {
@@ -129,7 +132,7 @@ function countStatusNum() {
 
 // 將現狀打包
 function packageTodo() {
-  allTodo = getAllTodo();
+  allTodo = getAllTodo(todosDOM);
   var todos = [];
   $.map(allTodo, (todo) => {
     const status = ($(todo).find('span').hasClass('done'))? 'done':'not_yet';
@@ -174,7 +177,7 @@ function pushAPI(method, url, data, cb) {
 
 // 如果有東西正在編輯 -> 不能儲存 (加上 notOK class)
 function saveOK() {
-  const todos = getAllTodo();
+  const todos = getAllTodo(todosDOM);
   var ok = true;
   $.map(todos, (todo) => {
     if ($(todo).hasClass('editing')) {
@@ -197,7 +200,7 @@ function toOtherPage(token) {
 // 開始活動！
 
 // 拿 api 進來 -> 讀取 todos (篩選狀態、個別內容)
-// new_user 設定的值帶不出來，求解！
+// is_new_user 設定的值帶不出來，求解！
 api_url = 'http://mentor-program.co/mtr04group6/v61265/week12/todo/api_get_todos.php?token=' + token;
 pushAPI('GET', api_url, packageTodo(), (data) => {
   if (data.exit) {
@@ -217,12 +220,11 @@ pushAPI('GET', api_url, packageTodo(), (data) => {
     // 選定 status
     const status_chosen = data.status_chosen;
     chooseStatus(status_chosen);
-    new_user = false;
+    is_new_user = false;
     countStatusNum();
   } else {
-    addTodoToDOM(todosDOM, '造一艘火箭', false, false);
-    addTodoToDOM(todosDOM, '跟木乃伊決鬥', false, false);
-    addTodoToDOM(todosDOM, '或攀登艾菲爾鐵塔', false, false);
+    const words = ['造一艘火箭', '跟木乃伊決鬥', '或攀登艾菲爾鐵塔'];
+    words.forEach(word => addTodoToDOM(todosDOM, word, false, false));
     countStatusNum();
   }
 }) 
@@ -251,31 +253,25 @@ $('.delete-all').click(() => {
   countStatusNum();
 })
 
-// 進入編輯模式
-todosDOM.on('click', '.update-todo__btn', (e) => {
-  const card = $(e.target).parent().parent();
-  const content = card.find('span').text().trim();
-  card.find('.edit-todo__input').show();
-  card.find('.edit-todo__input').val(content);
-  card.find('.edit_ok__btn').show();
-  card.find('label').hide();
-  card.find('.update-todo__btn').hide();
-  card.toggleClass('editing');
-  card.find('.form-check__input').hide();
-  saveOK();
-})
+// 編輯功能
+todosDOM.on('click', '.edit-todo__btn', (e) => {
+  let card = $(e.target).parent().parent();
+  if (!card.hasClass('todo')) {
+    card = card.parent();
+  }
 
-// 編輯完成
-todosDOM.on('click', '.edit_ok__btn', (e) => {
-  const card = $(e.target).parent().parent();
-  const content = card.find('.edit-todo__input').val();
-  card.find('.edit-todo__input').hide();
-  card.find('span').text(content);
-  card.find('.edit_ok__btn').hide();
-  card.find('label').show();
-  card.find('.update-todo__btn').show();
+  // 先把內容帶過去
+  if (card.hasClass('completed')) {
+    const content = card.find('span').text().trim();
+    card.find('.edit-todo__input').val(content);
+  } else {
+    const content = card.find('.edit-todo__input').val();
+    card.find('span').text(content);
+  }
+
+  // 調整 class
   card.toggleClass('editing');
-  card.find('.form-check__input').show();
+  card.toggleClass('completed');
   saveOK();
 })
 

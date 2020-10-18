@@ -2,7 +2,7 @@ $font-size-normal: 16px;
 $btn-color-01: #737373;
 $btn-color-02: #9a9a9a;
 
-@mixin btn-01() {
+@mixin btn-grey() {
   border: solid 1px #a8a8a8;
   color: #a8a8a8;
 }

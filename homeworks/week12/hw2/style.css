@@ -14,3 +14,7 @@ img {
 .add-todo-form {
     margin-top: 20px;
 }
+
+.editing label, .editing .update-todo__btn, .completed .edit-todo__input, .completed .edit_ok__btn {
+    display: none !important;
+}

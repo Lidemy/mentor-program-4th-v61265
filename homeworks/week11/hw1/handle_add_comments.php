@@ -13,7 +13,7 @@
     $content = $_POST['content'];
     $role = getFromUsrname($username)['role'];
 
-    if ($role !== 1 && $role !== 2) {
+    if ($role === 'bnned-member') {
         header('Location: index.php');
         exit();
     }

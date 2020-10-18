@@ -6,7 +6,7 @@
     // 身分認證
     $username = $_SESSION['username'];
     $role = getFromUsrname($username)['role'];
-    if ($role !== 2) {
+    if ($role !== 'admin') {
         header('Location: ./index.php');
         exit();
     }

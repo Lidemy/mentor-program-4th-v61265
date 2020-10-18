@@ -8,7 +8,7 @@
     $role = getFromUsrname($username)['role'];
 
     // 檢查權限
-    if ($role !== 2) {
+    if ($role !== 'admin') {
         header("Location: ./index.php");
     }
 
@@ -33,8 +33,8 @@
     $row = $result->fetch_assoc();
     $username = $row['username'];
 
-    // 把該用戶的留言 is_deleted 改成 2
-    $sql ="UPDATE v61265_board_comments SET `is_deleted`=2 WHERE username=?";
+    // 把該用戶的留言 is_deleted 改成 1
+    $sql ="UPDATE v61265_board_comments SET `is_deleted`=1 WHERE username=?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $username);
     $result = $stmt->execute();

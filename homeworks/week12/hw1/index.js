@@ -31,17 +31,23 @@ function addCommentToDom(container, comment, isPrepend) {
     created_at = 'new!';
   }
 
-  var style = []
+  let style = {}
   if (sequence % 2 === 1) {
-    style = ['border-info mb-3', 'text-info'];
+    style = {
+      cardClass: 'border-info mb-3', 
+      cardBodyClass: 'text-info'
+    };
   } else {
-    style = ['border-danger mb-3', 'text-danger'];
+    style = {
+      cardClass: 'border-danger mb-3',
+      cardBodyClass: 'text-danger'
+    };
   }
 
   const template = `
-  <div class="card ${style[0]}" style="max-width: 100%;">
+  <div class="card ${style.cardClass}" style="max-width: 100%;">
     <div class="card-header">${escape(created_at)}</div>
-    <div class="card-body ${style[1]}">
+    <div class="card-body ${style.cardBodyClass}">
       <h5 class="card-title">${escape(comment.nickname)}</h5>
       <p class="card-text">${escape(comment.content)}</p>
     </div>
@@ -57,40 +63,36 @@ function addCommentToDom(container, comment, isPrepend) {
 }
 
 // 用函式串 API
-function getCommentsAPI(siteKey, lastID, cb) {
+function getCommentsAPI(siteKey, lastID) {
   // 設定 url
   var url = "http://mentor-program.co/mtr04group6/v61265/week12/board/api_comments.php?site_key=" + siteKey;
   if (lastID) {
     url += "&before=" + lastID;
   }
 
-  //發送 request，並回傳 data
-  $.ajax({
-    url: url
-  }).done((data) => {
-    cb(data);
-  }); 
+  // return 一個 promise
+  return fetch(url)
+    .then(res => res.json())
+    .catch(err => console.log(err));
 }
 
 // 用函式顯示留言
-function getComments() {
-  getCommentsAPI(siteKey, lastID, (data) => {
-    $('.load-more').hide();
-    if (!data.ok) {
-      alert(data.message);
-      return;
-    }
-    const comments = data.discussion;
-    for (const comment of comments) {
-      addCommentToDom(commentsDom, comment, false);
-    }
-    const length = comments.length;
-    lastID = comments[length - 1].id;
-    console.log(lastID);
-    if (lastID > 5) {
-      commentsDom.append(loadMoreButton);
-    }
-  });
+async function getComments() {
+  const commentsData = await getCommentsAPI(siteKey, lastID);
+  $('.load-more').hide();
+  if (!commentsData.ok) {
+    alert(commentsData.message);
+    return;
+  }
+  const comments = commentsData.discussion;
+  for (const comment of comments) {
+    addCommentToDom(commentsDom, comment, false);
+  }
+  const length = comments.length;
+  lastID = comments[length - 1].id;
+  if (lastID > 5) {
+    commentsDom.append(loadMoreButton);
+  }
 }
 
 // 沒錯的話就可以拿資料了

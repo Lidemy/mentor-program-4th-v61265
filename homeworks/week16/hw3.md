@@ -21,7 +21,7 @@
 20. console.log(b)
 ```
 
-進入程式的 `Global EC` ，初始化 `Global VO`：
+進入程式的 `Global ES` ，初始化 `Global VO`：
 ```
 global VO: {
 	a: undefined,
@@ -39,7 +39,7 @@ global VO: {
 
 `02` ~ `15` 都只是設定 function ，沒有跑什麼，直到 `16` 處才進入 function fn()（`02` 處）。
 
-進入 finction fn() ，也就是 stack 疊一層 `fn EC` ，初始化 `fn AO`：
+進入 finction fn() ，也就是 stack 疊一層 `fn ES` ，初始化 `fn AO`：
 ```
 fn AO: {
 	a: undefined,
@@ -52,7 +52,7 @@ global VO: {
 }
 ```
 
-因此 `03` 處的 a 會找到此時 `fn AO`（因為在 `fn EC` 中）的 a ，因此輸出 `undefined` 。
+因此 `03` 處的 a 會找到此時 `fn AO`（因為在 `fn ES` 中）的 a ，因此輸出 `undefined` 。
 
 `04` 處 ， `fn AO` 的 a 被賦值為 5 。
 ```
@@ -67,7 +67,7 @@ global VO: {
 }
 ```
 
-因此 `05` 處的 a 會找到此時 `fn AO`（因為在 `fn EC` 中）的 a ，因此輸出 `5` 。
+因此 `05` 處的 a 會找到此時 `fn AO`（因為在 `fn ES` 中）的 a ，因此輸出 `5` 。
 
 `06` 處， `fn AO` 的 a 被賦值為 6 。
 ```
@@ -84,7 +84,7 @@ global VO: {
 
 `07` 處宣告 a ，但因為已經被宣告過了所以可以不用管他。
 
- `08` 處進入 function fn2()（`10` 處）。進入 finction fn() ，也就是 stack 疊一層 `fn2 EC` ，初始化 `fn2 AO`，因為裡面沒有宣告任何變數和函數，因此 AO 是空的。
+ `08` 處進入 function fn2()（`10` 處）。進入 finction fn() ，也就是 stack 疊一層 `fn2 ES` ，初始化 `fn2 AO`，因為裡面沒有宣告任何變數和函數，因此 AO 是空的。
  
 ```
 fn2 AO: {
@@ -139,7 +139,7 @@ global VO: {
 }
 ```
 
-`fn2` 結束，抽掉 `fn2 EC` 和 `fn2 AO`，回到 `09` 處。
+`fn2` 結束，抽掉 `fn2 ES` 和 `fn2 AO`，回到 `09` 處。
 ```
 fn AO: {
 	a: 20,
@@ -152,9 +152,9 @@ global VO: {
 	b: 100
 }
 ```
-此時在`fn EC` 中，因此 `09` 的 a 找到 `fn AO` ，回傳 20 。
+此時在`fn ES` 中，因此 `09` 的 a 找到 `fn AO` ，回傳 20 。
 
-`fn` 結束，抽掉 `fn EC` 和 `fn AO`，回到 `17` 處。
+`fn` 結束，抽掉 `fn ES` 和 `fn AO`，回到 `17` 處。
 ```
 global VO: {
 	a: 1,
@@ -162,7 +162,7 @@ global VO: {
 	b: 100
 }
 ```
-此時在`global EC` 中，因此 `09` 的 a 找到 `global AO` ，回傳 1 。
+此時在`global ES` 中，因此 `09` 的 a 找到 `global AO` ，回傳 1 。
 
 `18` 重新賦值 a = 10 。
 

@@ -39,7 +39,7 @@ cb 被移至 Callback Queue 中，等 stack 被清空。
 
 ![](https://static.coderbridge.com/img/v61265/0cc1037227534a9b9e4f14cb9c6ac91b.jpg)
 
-因為 `i` 這個變數是於 `Global EC` 中被宣告，因此是全域變數，又因為此時迴圈已經全部跑完，i 的值為 5 ，所以 `console.log(i)` 會輸出五。
+因為 `i` 這個變數是於 `Global ES` 中被宣告，因此是全域變數，又因為此時迴圈已經全部跑完，i 的值為 5 ，所以 `console.log(i)` 會輸出五。
 ![](https://static.coderbridge.com/img/v61265/5421e7f0b03442988e9b0173bc069b66.gif)
 
 因此最後輸出為：

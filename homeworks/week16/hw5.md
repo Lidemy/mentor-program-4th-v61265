@@ -5,7 +5,7 @@
 
 簡單記錄一下無法獨力完成的題目，順便在次複習 Closure 的概念，練習說清楚。
 
-題目：https://github.com/Lidemy/mentor-program-4th/issuEC/16
+題目：https://github.com/Lidemy/mentor-program-4th/issues/16
 
 **Debounce**
 
@@ -16,7 +16,7 @@
 $('input').change(handleChange)
 
 // 讓原本發後端 api 的函式 debounce
-const debouncedFn = debounce(getAutoSuggECtions, 250)
+const debouncedFn = debounce(getAutoSuggestions, 250)
 
 function handleChange(e) {
   // 拿到 input 的值

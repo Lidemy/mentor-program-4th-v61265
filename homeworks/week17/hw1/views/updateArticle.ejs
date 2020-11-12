@@ -1,0 +1,34 @@
+<!doctype html>
+<head>
+<%- include('template/header') %>
+
+</head>
+<html>
+    <%- include('template/navebar') %>
+    <div class="container">
+        <h1>更改文章</h1>
+        <%= errMessage %>
+        <form method='POST' action='/article/update/<%= article.dataValues.id %>'>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">文章標題</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name='title' value=<%= article.dataValues.title %>>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">分類</label>
+            <select class="form-control" name='categoryId'>
+                <% for (category of categories) { 
+                        let isSelected = null
+                        console.log(article.dataValues.content)
+                        if (category.dataValues.id === article.dataValues.categoryId) isSelected =  'selected' %>
+                    <option value= <%= category.dataValues.id %> <%= isSelected %>><%= category.dataValues.name %></option>
+                <% } %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">文章內容</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name='content'><%= article.dataValues.content %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">送出</button>
+        </form>
+    </div>
+<html>

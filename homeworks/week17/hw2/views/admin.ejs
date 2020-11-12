@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+<%- include('template/header') %>
+
+</head>
+<html>
+    <%- include('template/navebar') %>
+    <div class="container mx-auto" style="margin: auto; max-width: 60rem">
+        <% if (errMessage[0]) { %> 
+            <div class="alert alert-danger" role="alert">
+                <%= errMessage %>
+            </div>
+        <% } %>
+        <form method='POST' action='/admin'>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">獎項名稱</span>
+                </div>
+                    <input type="text" class="form-control" name='name'/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">詳細說明</span>
+                </div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'></textarea>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">圖片網址</span>
+                </div>
+                    <input type="text" class="form-control" name='image'/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">中獎機率</span>
+                </div>
+                    <input type="text" class="form-control" name='probability'/>
+            </div>
+            <button type="submit" class="btn btn-outline-success btn-block">送出</button>
+        </form>
+        <% prizes.forEach(prize => { %>
+            <div class="card" style="margin: 3rem 0">
+                <div class="media" style="margin: 2rem">
+                    <img src=<%= prize.dataValues.image %> class="align-self-start mr-3" alt="<%= prize.dataValues.image %>的配圖" width="300px" length="400px">
+                    <div class="media-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h5 class="mt-0 text-info"><%= prize.dataValues.name %></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">機率：<%= prize.dataValues.probability %>%</h6>
+                        </div>
+                        <div>
+                            <a class="btn btn-outline-success btn-sm" href="/admin/update/<%= prize.dataValues.id %>" role="button">更改</a>
+                            <a class="btn btn-outline-danger btn-sm" href="/admin/delete/<%= prize.dataValues.id %>" role="button">刪除</a>
+                        </div>
+                    </div>
+                        
+                        <p><%= prize.dataValues.description %></p>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+
+    </div>
+<html>

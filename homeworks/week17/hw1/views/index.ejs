@@ -1,0 +1,28 @@
+<!doctype html>
+<head>
+<%- include('template/header') %>
+
+</head>
+<html>
+    <%- include('template/navebar') %>
+        <div class="mx-auto" style="margin: auto; max-width: 60rem">
+            <% for (article of articles) { %>
+                <div class="card d-block p-2" style="margin-bottom: 2em">
+                <div class="card-body media-body">
+                    <div class="d-flex justify-content-between">
+                        <div><h5 class="card-title"><%= article.dataValues.title %></h5></div>
+                        <div>
+                        <% if (username) { %>
+                            <a class="btn btn-outline-primary btn-sm" href="/article/update/<%= article.dataValues.id %>">編輯</a>
+                            <a class="btn btn-outline-danger btn-sm" href="/article/delete/<%= article.dataValues.id %>">刪除</a>
+                        <% } %>
+                        </div>
+                    </div>
+                    <h6 class="card-subtitle mb-2 text-muted"><a href='/category/item/<%= article.dataValues.Category.id %>'><%= article.dataValues.Category.name %></a></h6>
+                    <p class="card-text" style='white-space: pre-line; line-height: 2rem; font-size: 14px; display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp: 5; -webkit-box-orient: vertical;'><%= article.dataValues.content %></p>
+                    <a href="/article/item/<%= article.dataValues.id %>" class="card-link">read more</a>
+                </div>
+            </div>
+            <% } %>
+        </div>
+<html>

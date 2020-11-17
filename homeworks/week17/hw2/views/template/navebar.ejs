@@ -1,0 +1,16 @@
+<nav class='navbar'>
+  <div class='wrapper'>
+    <div class='navbar__site-name'>
+      Just A Bite!
+    </div>
+      <ul class='navbar__list'>
+        <li><a href='/lottory'>抽個籤</a></li>
+        <% if (username) { %>
+          <li><a href='/admin'>管理後台</a></li>
+          <li><a href='/logout'>登出</a></li>
+        <% } else { %>
+          <li><a href='/login'>登入</a></li>
+        <% } %>
+    </ul>
+  </div>
+</nav>

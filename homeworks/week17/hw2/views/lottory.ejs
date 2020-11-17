@@ -1,0 +1,36 @@
+<!doctype html>
+<head>
+    <%- include('template/header') %>
+    <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
+</head>
+<html>
+    <%- include('template/navebar') %>
+    <section class='lottery'>
+        <div class='lottery__wrapper'>
+            <div class='lottery__title'><h2>用《蘇菲旋轉》來占卜吧！</h2></div>
+            <div class='content__desc'>
+                <div class='desc__item'>
+                想個問題，然後抽籤。
+                </div>
+                <div class='desc__item'>
+                    <div class='item__title'>機　率：</div>
+                    <p>
+                    <% allPrizes.forEach(prize => { %>
+                        <%= prize.name %>：<%= prize.probability %>%<br>
+                    <% }) %>
+                    </p>
+                </div>
+                <button class='btn__lottery'>我要抽籤</button>
+            </div>
+        </div>
+        <div class='lottery__result card' style="display: none; width: 40rem;">
+            <img src="" class="card-img-top image">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        <button class='btn__lottery__result'>我要抽籤</button>
+        </div>
+    </section>
+    <script src='lottory.js'></script>
+<html>

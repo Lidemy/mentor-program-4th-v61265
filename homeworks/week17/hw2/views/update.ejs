@@ -1,0 +1,43 @@
+<!doctype html>
+<head>
+<%- include('template/header') %>
+
+</head>
+<html>
+    <%- include('template/navebar') %>
+    <div class="container mx-auto" style="margin: auto; max-width: 60rem">
+        <h1>更改獎項內容</h1>
+        <% if (errMessage[0]) { %> 
+            <div class="alert alert-danger" role="alert">
+                <%= errMessage %>
+            </div>
+        <% } %>
+        <form method='POST' action='/admin/update/<%= prize.dataValues.id %>'>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">獎項名稱</span>
+                </div>
+                    <input type="text" class="form-control" name='name' value=<%= prize.dataValues.name %>>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">詳細說明</span>
+                </div>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'><%= prize.dataValues.description %></textarea>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">圖片網址</span>
+                </div>
+                    <input type="text" class="form-control" name='image' value=<%= prize.dataValues.image %>>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">中獎機率</span>
+                </div>
+                    <input type="text" class="form-control" name='probability'value=<%= prize.dataValues.probability %>>
+            </div>
+            <button type="submit" class="btn btn-outline-success btn-block">送出</button>
+        </form>
+    </div>
+<html>

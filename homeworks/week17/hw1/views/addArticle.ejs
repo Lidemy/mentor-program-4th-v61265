@@ -1,0 +1,31 @@
+<!doctype html>
+<head>
+<%- include('template/header') %>
+
+</head>
+<html>
+    <%- include('template/navebar') %>
+    <div class="container">
+        <h1>增新文章</h1>
+        <%= errMessage %>
+        <form method='POST' action='/article/add'>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">文章標題</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name='title' placeholder="請輸入文章標題">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">分類</label>
+            <select class="form-control" name='categoryId'>
+                <% for (category of categories) { %> 
+                    <option value=<%= category.dataValues.id %>><%= category.dataValues.name %></option>
+                <% } %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">文章內容</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name='content'></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">送出</button>
+        </form>
+    </div>
+<html>

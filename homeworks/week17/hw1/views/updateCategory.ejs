@@ -1,0 +1,21 @@
+<!doctype html>
+<head>
+<%- include('template/header') %>
+
+</head>
+<html>
+    <%- include('template/navebar') %>
+    <div class="container">
+        <h1>編輯分類</h1>
+        <%= errMessage %>
+        <form method='POST' action='/category/update/<%= category.id %>'>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="請輸入分類名稱" name='name' value=<%= category.dataValues.name %>>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">編輯</button>
+            </div>
+        </div>
+        </form>
+        </div>
+    </div>
+<html>

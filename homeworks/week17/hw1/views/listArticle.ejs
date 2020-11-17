@@ -1,0 +1,28 @@
+<!doctype html>
+<head>
+<%- include('template/header') %>
+
+</head>
+<html>
+    <%- include('template/navebar') %>
+    <div class="containe rmx-auto" style="margin: auto; max-width: 60rem">
+        <h1>文章列表</h1>
+        <ul class="list-group">
+            <% for (article of articles) { %>
+                <li class="list-group-item d-flex justify-content-between">
+                    <div>
+                        <%= article.dataValues.title %>
+                        <a class="btn btn-outline-info btn-sm" href="/article/item/<%= article.dataValues.id %>">看完整文章</a>
+                    </div>
+                    <div>
+                        <% if (username) { %>
+                            <a class="btn btn-outline-primary btn-sm" href="/article/update/<%= article.dataValues.id %>">編輯</a>
+                            <a class="btn btn-outline-danger btn-sm" href="/article/delete/<%= article.dataValues.id %>">刪除</a>
+                        <% } %>
+                    </div>
+                </li>
+            <% } %>
+            </ul>
+        </div>
+    </div>
+<html>

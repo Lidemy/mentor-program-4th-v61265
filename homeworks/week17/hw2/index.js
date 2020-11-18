@@ -38,6 +38,11 @@ function checkAdmin(req, res, next) {
   return next();
 }
 
+app.route('/')
+  .get((req, res) => {
+    return res.redirect('/login');
+  });
+
 // 會員系統
 app.route('/login')
   .get(userController.login)

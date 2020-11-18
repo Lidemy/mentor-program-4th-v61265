@@ -7,13 +7,13 @@
 
 **心得速記：**
 感謝認真寫每日進度ㄉ過去ㄉ我，找不到像之前那樣可以貫穿的主題，以下內容可視為生菜每日進度ㄉ精華集 (???)
-![怕跑版ㄉ部落格版](https://v61265.coderbridge.io/2020/11/14/MTR04-week15/)
+[怕跑版ㄉ部落格版](https://v61265.coderbridge.io/2020/11/14/MTR04-week15/)
 
 **自我檢測：**
 給未來求職前的自己作為回頭複習ㄉ筆記
 or（如果我寫到一半發懶）
 直接想像自己在面試時被問到，我會怎麼回～
-![怕跑版ㄉ部落格](https://v61265.coderbridge.io/2020/10/17/week15%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%87%82%E4%BA%86%E5%97%8E%EF%BC%9F%EF%BC%8D%E8%87%AA%E6%88%91%E6%AA%A2%E6%B8%AC/)
+[怕跑版ㄉ部落格](https://v61265.coderbridge.io/2020/10/17/week15%E4%BD%A0%E7%9C%9F%E7%9A%84%E6%87%82%E4%BA%86%E5%97%8E%EF%BC%9F%EF%BC%8D%E8%87%AA%E6%88%91%E6%AA%A2%E6%B8%AC/)
 
 
 ## 學了什麼
@@ -476,7 +476,7 @@ exports.default = defaultTask;
 #### 關聯式資料庫 SQL
 - 儲存格式為 table （像是表格那樣）
 - table 之間互相關聯（例如 id 都一樣）
-- 結構穩定，但相對彈性低，也不支援 JOIN 。
+- 結構穩定，但相對彈性低。
 - Transaction 遵守 ACID 。
 - 常見如 MySQL、PostgreSQL、Microsoft SQL Server、SQLite
 

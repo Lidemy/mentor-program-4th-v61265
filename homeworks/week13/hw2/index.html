@@ -4,37 +4,47 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>十三週留言板 plugin</title>
+        <title>留言板 plugin</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <style>
+            body {
+                background-color: #ffefd7;
+                background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15l15 15H0V15zM15 0l15 15V0H15z' fill='%23ffa231' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+            }
+
+            .container {
+                background: rgb(255, 255, 255, 0.8);
+                border-radius: 10px;
+                padding: 40px;
+            }
+        </style>
     </head>
     <body>
-        <div class='container'>
-            <div class="comments-area">
-
-            </div>
-            <div class="comments-area2">
-
-            </div>
+        <div class='container' style='max-width: 650px; margin-top: 50px; margin-bottom: 20px;'>
+            <form class='site-key'>
+                <div class="form-group">
+                  請輸入使用者名稱：（十個字以內，只接受半形英文、數字和底線）
+                  <input type="text" class="form-control input-site-key" name='site-key' maxlength="10" onKeyUp="value=value.replace(/[\W]/g,'')">
+                </div>
+                <button type="submit" class="btn btn-primary">送出</button>
+            </form>
         </div>
     <script src='https://code.jquery.com/jquery-3.5.1.js'></script>
     <script src='./dist/main.js'></script>
     <script>
-        $(document).ready(() =>{
+        $('.site-key').submit((e) => {
+            e.preventDefault();
+            const username = $('input[name=site-key]').val().trim()
+            if (!username) return alert('請不要空白');
             commentPlugin.init({
-                siteKey: 'v61265',
+                siteKey: $('input[name=site-key]').val(),
                 apiUrl: 'http://mentor-program.co/mtr04group6/v61265/week12/board/',
-                containerSelector: '.comments-area'
+                containerSelector: '.container'
             })
-        })
-
-        $(document).ready(() =>{
-            commentPlugin.init({
-                siteKey: 'v61265b',
-                apiUrl: 'http://mentor-program.co/mtr04group6/v61265/week12/board/',
-                containerSelector: '.comments-area'
-            })
+            $('.site-key').hide("")
         })
     </script>
     </body>
 
 </html>
+

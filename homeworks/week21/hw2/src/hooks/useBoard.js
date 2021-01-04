@@ -12,7 +12,11 @@ export default function useBoard() {
       ? JSON.parse(window.localStorage.getItem("board"))[1]
       : "black"
   );
-  const [winner, setWinner] = useState("");
+  const [winner, setWinner] = useState(
+    window.localStorage.getItem("board")
+      ? JSON.parse(window.localStorage.getItem("board"))[2]
+      : ""
+  );
   const [recordInput, setRrecordInput] = useState("");
 
   // 改變 board + round
@@ -54,14 +58,21 @@ export default function useBoard() {
     }
   };
 
+  // 重設棋盤、贏家、輪到誰 → 存入 localStorage
   const handleReset = () => {
     setBoard(Array(column).fill(Array(row).fill(null)));
+    setWinner("");
+    setRound("black");
+    window.localStorage.setItem(
+      "board",
+      JSON.stringify([JSON.stringify(board), round, winner])
+    );
   };
 
   const handleSave = () => {
     window.localStorage.setItem(
       "board",
-      JSON.stringify([JSON.stringify(board), round])
+      JSON.stringify([JSON.stringify(board), round, winner])
     );
     alert("已儲存，再次開啟時會被保存！");
   };
@@ -83,10 +94,12 @@ export default function useBoard() {
   };
 
   const hanleReproduceRecord = () => {
-    const record = document.querySelector(".record").value;
+    const record = JSON.parse(atob(recordInput));
+    console.log(record);
     try {
-      setBoard(JSON.parse(JSON.parse(record)[0]));
-      setRound(JSON.parse(record)[1]);
+      setBoard(JSON.parse(record[0]));
+      setRound(record[1]);
+      setWinner(record[2]);
       setRrecordInput("");
     } catch (e) {
       console.log(e);

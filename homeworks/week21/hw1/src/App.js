@@ -36,7 +36,7 @@ const Container = styled.div`
     &:hover {
       cursor: pointer;
       background: ${(props) => props.theme.colors.blue_1};
-      color: ${(props) => props.theme.colors.yello_1};
+      color: ${(props) => props.theme.colors.yellow_1};
     }
   }
 

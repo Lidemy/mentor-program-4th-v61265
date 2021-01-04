@@ -56,6 +56,7 @@ export default function Information({
   recordInput,
   handleChangeRecord,
   hanleReproduceRecord,
+  winner,
 }) {
   return (
     <InformationWrapper>
@@ -65,7 +66,7 @@ export default function Information({
         <Button onClick={() => handleCopy()}>
           <Hidden
             className='recordData'
-            value={JSON.stringify([JSON.stringify(board), round])}
+            value={btoa(JSON.stringify([JSON.stringify(board), round, winner]))}
           />
           複製棋局
         </Button>
@@ -85,6 +86,7 @@ export default function Information({
 
 Information.propTypes = {
   round: PropTypes.string,
+  winner: PropTypes.string,
   handleReset: PropTypes.func,
   handleSave: PropTypes.func,
   handleCopy: PropTypes.func,

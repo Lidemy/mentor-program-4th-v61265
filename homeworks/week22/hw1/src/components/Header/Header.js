@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import { Link, NavLink, useLocation, useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts";
 import { setAuthToken } from "../../utils";
 
@@ -41,7 +41,7 @@ const NavebarList = styled.div`
   align-items: center;
 `;
 
-const Nav = styled(Link)`
+const Nav = styled(NavLink)`
   display: flex;
   height: 64px;
   align-items: center;
@@ -55,14 +55,13 @@ const Nav = styled(Link)`
     background: #373f27;
   }
 
+  &:active {
+    background: #373f27;
+  }
+
   & + & {
     margin-left: 5px;
   }
-
-  ${(props) =>
-    props.$active &&
-    `
-  background: #373f27;`}
 `;
 
 export default function Header() {
@@ -80,12 +79,12 @@ export default function Header() {
     <HeaderContainer>
       <LeftContainer>
         <Brand to='/'>生菜的部落格</Brand>
-        <Nav to='/about' $active={location === "/about"}>
+        <Nav to='/about' activeStyle={{ background: "#373f27" }}>
           關於我
         </Nav>
         <NavebarList>
           {user && (
-            <Nav to='/addPost' $active={location === "/addPost"}>
+            <Nav to='/addPost' activeStyle={{ background: "#373f27" }}>
               發布文章
             </Nav>
           )}
@@ -94,10 +93,10 @@ export default function Header() {
       <NavebarList>
         {!user && (
           <>
-            <Nav to='/register' $active={location === "/register"}>
+            <Nav to='/register' activeStyle={{ background: "#373f27" }}>
               註冊
             </Nav>
-            <Nav to='/login' $active={location === "/login"}>
+            <Nav to='/login' activeStyle={{ background: "#373f27" }}>
               登入
             </Nav>
           </>

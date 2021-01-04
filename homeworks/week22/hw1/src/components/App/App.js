@@ -47,7 +47,7 @@ function App() {
         <Root>
           <Wrapper>
             <Router>
-              <Header></Header>
+              <Header />
               <Switch>
                 <Route exact path='/'>
                   <HomePage />
